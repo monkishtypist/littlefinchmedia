@@ -1,12 +1,16 @@
 import React from "react"
+import styled from "styled-components"
 
-import footerStyles from "./footer.module.scss"
+const Footer = styled.footer`
+  background-color: #000;
+  color: #fff;
+`
 
-const Footer = ({ siteTitle, siteDescription }) => (
-  <footer className={`footer ${footerStyles.footer}`}>
+const PageFooter = ({ siteTitle, siteDescription }) => (
+  <Footer className={`footer`}>
     <p>{siteTitle} © {new Date().getFullYear()}</p>
     <p>{siteDescription}</p>
-  </footer>
+  </Footer>
 )
 
-export default Footer
+export default PageFooter

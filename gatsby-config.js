@@ -1,4 +1,5 @@
 module.exports = {
+  pathPrefix: "/littlefinchmedia",
   siteMetadata: {
     title: `Little Finch Media`,
     description: `A lifestyle development company.`,
@@ -31,5 +32,6 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
     `gatsby-plugin-sass`,
+    `gatsby-plugin-styled-components`,
   ],
 }
