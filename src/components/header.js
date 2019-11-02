@@ -20,7 +20,6 @@ const Nav = styled.nav`
   display: flex;
   flex: 1 0 auto;
   flex-direction: row;
-  justify-content: space-around;
   .navbar__brand {
     color: black;
     cursor: pointer;
@@ -32,8 +31,8 @@ const Nav = styled.nav`
     color: gray;
     cursor: pointer;
     padding: 1rem;
-    &:last-child {
-      margin-right: auto;
+    &:first-child {
+      margin-left: auto;
     }
     &.active {
       color: black;
