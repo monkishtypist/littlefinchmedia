@@ -3,11 +3,19 @@ import { useStaticQuery, graphql } from "gatsby"
 import styled from "styled-components"
 // import Img from "gatsby-image"
 import BackgroundImage from 'gatsby-background-image'
+import Section from './section'
 
-const Section = styled(BackgroundImage)`
-  display: flex;
-  flex-direction: row;
+const SectionOuter = styled(Section)`
+  box-sizing: border-box;
   min-height: 100vh;
+  padding: 4rem 2rem 2rem;
+`
+
+const SectionInner = styled(BackgroundImage)`
+  box-shadow: 0 0 18px rgba(0,0,0,.2);
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: row;
   position: relative;
   background-attachment: fixed;
   &::before,
@@ -38,18 +46,15 @@ const SectionHero = ({ id, className }) => {
   `)
 
   return (
-    <Section
-      Tag="section"
-      id={id || ''}
-      className={className || ''}
-      fluid={data.sectionBackground.childImageSharp.fluid}
-    >
-      <Content>
-        <div>
-          <h1>Little Finch Media</h1>
-        </div>
-      </Content>
-    </Section>
+    <SectionOuter id={id || ''} className={className || ''}>
+      <SectionInner fluid={data.sectionBackground.childImageSharp.fluid}>
+        <Content>
+          <div>
+            <h1>Little Finch Media</h1>
+          </div>
+        </Content>
+      </SectionInner>
+    </SectionOuter>
   )
 }
 

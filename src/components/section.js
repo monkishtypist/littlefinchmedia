@@ -12,7 +12,7 @@ const Section = styled.section`
 export default ({ id, className, children }) => (
   <Section
     id={id || ''}
-    className={`section ${className || ''} ${SectionStyles.section}`}
+    className={`section ${className || ''}`}
   >
     {children}
   </Section>

@@ -1,5 +1,5 @@
 import React from "react"
-import { Link } from 'gatsby'
+// import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
 import { Link as Anchor } from 'react-scroll'
 import styled from "styled-components"
@@ -22,7 +22,7 @@ const Nav = styled.nav`
   flex-direction: row;
   justify-content: space-around;
   .navbar__brand {
-    color: white;
+    color: black;
     cursor: pointer;
     font-weight: bold;
     margin-right: auto;
@@ -36,8 +36,7 @@ const Nav = styled.nav`
       margin-right: auto;
     }
     &.active {
-      background-color: rgba(0,0,0,.20);
-      color: white;
+      color: black;
     }
   }
 `
