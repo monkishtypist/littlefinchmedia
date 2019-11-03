@@ -1,9 +1,10 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
+import Layout from "../components/layout"
+import SEO from "../components/seo"
 import styled from "styled-components"
-// import Img from "gatsby-image"
+import Section from '../components/section'
 import BackgroundImage from 'gatsby-background-image'
-import Section from './section'
 
 const SectionOuter = styled(Section)`
   box-sizing: border-box;
@@ -28,34 +29,39 @@ const Content = styled.div`
   align-items: center;
   color: white;
   display: flex;
-  flex: 1 1 auto;
+  flex: 1 0 auto;
+  flex-direction: column;
   justify-content: center;
   z-index: 1;
-  h1 {
+  h2 {
     font-size: 40px;
   }
 `
 
-const SectionHero = ({ id, className }) => {
+const PageDevelopment = ({ id, className }) => {
   const data = useStaticQuery(graphql`
     query {
-      sectionBackground: file(relativePath: { eq: "finches-on-branch.jpg" }) {
+      sectionBackground: file(relativePath: { eq: "weaver-finch-2.jpg" }) {
         ...fluidImage
+      }
+      site {
+        ...siteMeta
       }
     }
   `)
 
   return (
-    <SectionOuter id={id || ''} className={className || ''}>
-      <SectionInner fluid={data.sectionBackground.childImageSharp.fluid}>
-        <Content>
-          <div>
-            <h1>Little Finch Media</h1>
-          </div>
-        </Content>
-      </SectionInner>
-    </SectionOuter>
+    <Layout>
+      <SEO title="Development" />
+      <SectionOuter id={id || 'Development'} className={className || ''}>
+        <SectionInner fluid={data.sectionBackground.childImageSharp.fluid}>
+          <Content>
+            <h1>Development</h1>
+          </Content>
+        </SectionInner>
+      </SectionOuter>
+    </Layout>
   )
 }
 
-export default SectionHero
+export default PageDevelopment

@@ -1,7 +1,7 @@
 import React from "react"
-// import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
-import { Link as Anchor } from 'react-scroll'
+// import { Link } from 'gatsby'
+import Link from 'gatsby-plugin-transition-link/AniLink'
 import styled from "styled-components"
 
 const Header = styled.header`
@@ -44,56 +44,71 @@ const PageHeader = ({ siteTitle }) => (
   <Header className={`header`}
   >
     <Nav className={`navbar`} role="navigation" aria-label="main navigation">
-      <Anchor
-        className={`navbar__brand`}
+      <Link
+        fade
+        to="/"
         activeClass="active"
-        to="Welcome"
-        spy={true}
-        smooth={true}
-        duration={350}
+        className={`navbar__brand`}
+        exit={{
+        }}
+        entry={{
+          delay: 0.5
+        }}
       >
         {siteTitle}
-      </Anchor>
-      <Anchor
-        className={`navbar__link`}
+      </Link>
+      <Link
+        fade
+        to="/strategy"
         activeClass="active"
-        to="Strategy"
-        spy={true}
-        smooth={true}
-        duration={350}
+        className={`navbar__link`}
+        exit={{
+        }}
+        entry={{
+          delay: 0.5
+        }}
       >
         Strategy
-      </Anchor>
-      <Anchor
-        className={`navbar__link`}
+      </Link>
+      <Link
+        fade
+        to="/development"
         activeClass="active"
-        to="Development"
-        spy={true}
-        smooth={true}
-        duration={350}
+        className={`navbar__link`}
+        exit={{
+        }}
+        entry={{
+          delay: 0.5
+        }}
       >
         Development
-      </Anchor>
-      <Anchor
-        className={`navbar__link`}
+      </Link>
+      <Link
+        fade
+        to="/growth"
         activeClass="active"
-        to="Growth"
-        spy={true}
-        smooth={true}
-        duration={350}
+        className={`navbar__link`}
+        exit={{
+        }}
+        entry={{
+          delay: 0.5
+        }}
       >
         Growth
-      </Anchor>
-      <Anchor
-        className={`navbar__link`}
+      </Link>
+      <Link
+        fade
+        to="/connect"
         activeClass="active"
-        to="site-footer"
-        spy={true}
-        smooth={true}
-        duration={350}
+        className={`navbar__link`}
+        exit={{
+        }}
+        entry={{
+          delay: 0.5
+        }}
       >
         Connect
-      </Anchor>
+      </Link>
     </Nav>
   </Header>
 )

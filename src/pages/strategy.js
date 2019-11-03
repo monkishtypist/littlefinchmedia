@@ -1,8 +1,10 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
+import Layout from "../components/layout"
+import SEO from "../components/seo"
 import styled from "styled-components"
+import Section from '../components/section'
 import BackgroundImage from 'gatsby-background-image'
-import Section from './section'
 
 const SectionOuter = styled(Section)`
   box-sizing: border-box;
@@ -27,7 +29,8 @@ const Content = styled.div`
   align-items: center;
   color: white;
   display: flex;
-  flex: 1 1 auto;
+  flex: 1 0 auto;
+  flex-direction: column;
   justify-content: center;
   z-index: 1;
   h2 {
@@ -35,26 +38,30 @@ const Content = styled.div`
   }
 `
 
-const SectionCustom = ({ id, className }) => {
+const PageStrategy = ({ id, className }) => {
   const data = useStaticQuery(graphql`
     query {
-      sectionBackground: file(relativePath: { eq: "weaver-finch-2.jpg" }) {
+      sectionBackground: file(relativePath: { eq: "finch-reeds.jpg" }) {
         ...fluidImage
+      }
+      site {
+        ...siteMeta
       }
     }
   `)
 
   return (
-    <SectionOuter id={id || ''} className={className || ''}>
-      <SectionInner fluid={data.sectionBackground.childImageSharp.fluid}>
-        <Content>
-          <div>
-            <h2>Development</h2>
-          </div>
-        </Content>
-      </SectionInner>
-    </SectionOuter>
+    <Layout>
+      <SEO title="Strategy" />
+      <SectionOuter id={id || 'Strategy'} className={className || ''}>
+        <SectionInner fluid={data.sectionBackground.childImageSharp.fluid}>
+          <Content>
+            <h1>Strategy</h1>
+          </Content>
+        </SectionInner>
+      </SectionOuter>
+    </Layout>
   )
 }
 
-export default SectionCustom
+export default PageStrategy
