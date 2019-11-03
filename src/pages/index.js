@@ -4,19 +4,19 @@ import React from "react"
 // import Img from "gatsby-image"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import SectionHero from "../components/section--hero"
-import SectionSocialMedia from "../components/section--social-media"
-import SectionInfrastructure from "../components/section--infrastructure"
-import SectionCustom from "../components/section--custom"
+import SectionWelcome from "../components/section--welcome"
+import SectionGrowth from "../components/section--growth"
+import SectionStrategy from "../components/section--strategy"
+import SectionDevelopment from "../components/section--development"
 
 const IndexPage = () => {
   return (
     <Layout>
       <SEO title="Home" />
-      <SectionHero id="Section1" />
-      <SectionSocialMedia id="Section2" />
-      <SectionInfrastructure id="Section3" />
-      <SectionCustom id="Section4" />
+      <SectionWelcome id="Welcome" />
+      <SectionStrategy id="Strategy" />
+      <SectionDevelopment id="Development" />
+      <SectionGrowth id="Growth" />
     </Layout>
   )
 }

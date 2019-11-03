@@ -47,7 +47,7 @@ const PageHeader = ({ siteTitle }) => (
       <Anchor
         className={`navbar__brand`}
         activeClass="active"
-        to="Section1"
+        to="Welcome"
         spy={true}
         smooth={true}
         duration={350}
@@ -57,35 +57,42 @@ const PageHeader = ({ siteTitle }) => (
       <Anchor
         className={`navbar__link`}
         activeClass="active"
-        to="Section2"
+        to="Strategy"
         spy={true}
         smooth={true}
         duration={350}
-        offset={1}
       >
-        Social Media
+        Strategy
       </Anchor>
       <Anchor
         className={`navbar__link`}
         activeClass="active"
-        to="Section3"
+        to="Development"
         spy={true}
         smooth={true}
         duration={350}
-        offset={1}
       >
-        Architecture
+        Development
       </Anchor>
       <Anchor
         className={`navbar__link`}
         activeClass="active"
-        to="Section4"
+        to="Growth"
         spy={true}
         smooth={true}
         duration={350}
-        offset={1}
       >
-        Custom
+        Growth
+      </Anchor>
+      <Anchor
+        className={`navbar__link`}
+        activeClass="active"
+        to="site-footer"
+        spy={true}
+        smooth={true}
+        duration={350}
+      >
+        Connect
       </Anchor>
     </Nav>
   </Header>
