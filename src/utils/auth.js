@@ -71,8 +71,10 @@ export const handleAuthentication = () => {
 }
 
 export const getProfile = () => {
-  // return user
-  return JSON.parse(localStorage.getItem('user'))
+  if (isBrowser) {
+    return JSON.parse(localStorage.getItem('user'))
+  }
+  return user
 }
 
 export const logout = () => {
