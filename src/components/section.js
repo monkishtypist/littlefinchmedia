@@ -1,11 +1,13 @@
-import React from "react"
-import styled from "styled-components"
+import React from 'react'
+import styled from 'styled-components'
 
 const Section = styled.section`
   background-color: #fff;
+  box-sizing: border-box;
   display: flex;
   flex-direction: row;
-  min-height: 100vh;
+  height: 100vh;
+  padding: 5rem 2rem;
   position: relative;
 `
 

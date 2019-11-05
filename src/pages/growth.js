@@ -4,13 +4,8 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import styled from "styled-components"
 import Section from '../components/section'
+import Title from '../components/title'
 import BackgroundImage from 'gatsby-background-image'
-
-const SectionOuter = styled(Section)`
-  box-sizing: border-box;
-  height: 100vh;
-  padding: 5rem 2rem 2rem;
-`
 
 const SectionInner = styled(BackgroundImage)`
   box-shadow: 0 0 18px rgba(0,0,0,.2);
@@ -53,13 +48,13 @@ const PageGrowth = ({ id, className }) => {
   return (
     <Layout>
       <SEO title="Growth" />
-      <SectionOuter id={id || 'Growth'} className={className || ''}>
+      <Section id={id || 'Growth'} className={className || ''}>
         <SectionInner fluid={data.sectionBackground.childImageSharp.fluid}>
           <Content>
-            <h1>Growth</h1>
+            <Title>Growth</Title>
           </Content>
         </SectionInner>
-      </SectionOuter>
+      </Section>
     </Layout>
   )
 }

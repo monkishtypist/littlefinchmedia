@@ -21,7 +21,7 @@ time, mark, audio, video {
   padding: 0;
   border: 0;
   font-size: 100%;
-  font: inherit;
+  /* font: inherit; */
   vertical-align: baseline;
 }
 
@@ -131,7 +131,8 @@ html {
  */
 
 a:focus {
-    outline: thin dotted;
+    /* outline: thin dotted; */
+    outline: 0;
 }
 
 /**

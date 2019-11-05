@@ -1,5 +1,6 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
+import { handleAuthentication } from "../utils/auth"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import styled from "styled-components"
@@ -33,10 +34,10 @@ const Content = styled.div`
   }
 `
 
-const PageConnect = ({ id, className }) => {
+const Callback = () => {
   const data = useStaticQuery(graphql`
     query {
-      sectionBackground: file(relativePath: { eq: "two-finches.jpg" }) {
+      sectionBackground: file(relativePath: { eq: "gouldian-finches.jpg" }) {
         ...fluidImage
       }
       site {
@@ -45,16 +46,15 @@ const PageConnect = ({ id, className }) => {
     }
   `)
 
+  handleAuthentication()
+
   return (
     <Layout>
-      <SEO title="Connect" />
-      <Section id={id || 'Connect'} className={className || ''}>
+      <SEO title="Callback" />
+      <Section id="Callback" className="section">
         <SectionInner fluid={data.sectionBackground.childImageSharp.fluid}>
           <Content>
-            <Title>Connect</Title>
-            <p><a href="mailto:inquiries@littlefinchmedia.com">inquiries@littlefinchmedia.com</a></p>
-            <p>{data.site.siteMetadata.title} © {new Date().getFullYear()}</p>
-            <p>{data.site.siteMetadata.description}</p>
+            <Title>Callback</Title>
           </Content>
         </SectionInner>
       </Section>
@@ -62,4 +62,4 @@ const PageConnect = ({ id, className }) => {
   )
 }
 
-export default PageConnect
+export default Callback
