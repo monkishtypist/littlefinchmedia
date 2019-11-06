@@ -1,38 +1,26 @@
-/**
- * Implement Gatsby's Browser APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/browser-apis/
- */
-
 import React from "react"
-import { silentAuth } from "./src/utils/auth"
+import { navigate } from "gatsby"
+
+import { AuthProvider } from "react-use-auth"
+
 // import "./src/styles/reset.css"
 
-class SessionCheck extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      loading: true,
-    }
-  }
-
-  handleCheckSession = () => {
-    this.setState({ loading: false })
-  }
-
-  componentDidMount() {
-    silentAuth(this.handleCheckSession)
-  }
-
-  render() {
-    return (
-      this.state.loading === false && (
-        <React.Fragment>{this.props.children}</React.Fragment>
-      )
-    )
-  }
+const params = {
+  // domain: process.env.AUTH0_DOMAIN,
+  // clientID: process.env.AUTH0_CLIENTID,
+  redirectUri: process.env.AUTH0_CALLBACK,
+  // audience: `https://${auth0_domain}/api/v2/`,
+  // responseType: "token id_token",
+  // scope: "openid profile email"
 }
 
-export const wrapRootElement = ({ element }) => {
-  return <SessionCheck>{element}</SessionCheck>
-}
+export const wrapRootElement = ({ element }) => (
+    <AuthProvider
+        navigate={navigate}
+        auth0_domain={process.env.AUTH0_DOMAIN}
+        auth0_client_id={process.env.AUTH0_CLIENTID}
+        auth0_params={params}
+    >
+        {element}
+    </AuthProvider>
+)

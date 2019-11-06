@@ -1,5 +1,6 @@
 import React from "react"
-import { login, isAuthenticated, getProfile } from "../utils/auth"
+import { Router } from "@reach/router"
+import { useAuth } from "react-use-auth"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import styled from "styled-components"
@@ -34,10 +35,21 @@ const Content = styled.div`
   }
 `
 
-const PageAccount = ({ id, className }) => {
-  if (!isAuthenticated()) return login()
+const Home = ({ user }) => {
+  return (
+    <div>
+      <p>Hello and welcome {user.nickname || "friend"}</p>
+      <p>
+        There is nothing to see here at the moment.
+      </p>
+    </div>
+  )
+}
 
-  const user = getProfile()
+const PageAccount = ({ id, className }) => {
+  const { isAuthenticated, user, login } = useAuth()
+
+  // if (!isAuthenticated()) return login()
 
   return (
     <Layout>
@@ -45,10 +57,9 @@ const PageAccount = ({ id, className }) => {
       <Section id={id || 'Account'} className={className || ''}>
         <SectionInner>
           <Content>
-            <p>Hello and welcome {user.nickname || "friend"}</p>
-            <p>
-              There is nothing to see here at the moment.
-            </p>
+            <Router>
+              <Home path="/account" user={user} />
+            </Router>
           </Content>
         </SectionInner>
       </Section>
