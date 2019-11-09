@@ -74,4 +74,4 @@ yarn-error.log
 littlefinchmedia.code-workspace
 
 # Development files
-.psd
+*.psd
