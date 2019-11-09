@@ -8,6 +8,13 @@ export const query = graphql `
       }
     }
   }
+  fragment navFluidImage on File {
+    childImageSharp {
+      fluid(maxHeight: 80) {
+        ...GatsbyImageSharpFluid
+      }
+    }
+  }
   fragment siteMeta on Site {
     siteMetadata {
       title

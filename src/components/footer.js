@@ -9,7 +9,7 @@ const Footer = styled.footer`
   display: flex;
   justify-content: center;
   left: 0;
-  padding: 1rem;
+  padding: 1rem 2rem 2rem;
   position: fixed;
   right: 0;
   z-index: 1000;
@@ -22,7 +22,7 @@ const Navbar = styled.nav`
   justify-content: space-between;
 `
 const NavbarLink = styled.a`
-  color: rgba(0,0,0,.5);
+  color: rgba(255,255,255,1);
   cursor: pointer;
   font-size: 14px;
   font-weight: 300;
@@ -30,7 +30,7 @@ const NavbarLink = styled.a`
   text-decoration: none;
   &.active,
   &:hover {
-    color: rgba(0,0,0,1);
+    color: rgba(255,255,255,.5);
   }
 `
 const NavbarAniLink = styled(AniLink)`

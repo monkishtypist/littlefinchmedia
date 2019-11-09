@@ -1,6 +1,8 @@
 import React from 'react'
+import { useStaticQuery, graphql } from "gatsby"
 import PropTypes from 'prop-types'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
+import Img from 'gatsby-image'
 import styled from 'styled-components'
 
 const Header = styled.header`
@@ -9,7 +11,7 @@ const Header = styled.header`
   justify-content: center;
   left: 0;
   line-height: 1.14285714286;
-  padding: 1rem;
+  padding: 2rem 2rem 1rem;
   position: fixed;
   right: 0;
   top: 0;
@@ -24,7 +26,7 @@ const Navbar = styled.nav`
 `
 
 const NavbarBrand = styled(AniLink)`
-  color: black;
+  color: rgba(255,255,255,1);
   cursor: pointer;
   font-size: 14px;
   font-weight: 300;
@@ -40,90 +42,122 @@ const NavbarLinks = styled.div`
 `
 
 const NavbarAniLink = styled(AniLink)`
-  color: rgba(0,0,0,.5);
+  background-color: transparent;
+  border-radius: 50%;
+  color: rgba(255,255,255,1);
   cursor: pointer;
   font-size: 14px;
   font-weight: 300;
-  padding: 1rem;
+  height: 80px;
+  padding: 1rem .5rem;
   text-decoration: none;
-  &.active,
+  transition: all .25s ease-in-out;
+  width: 80px;
+  filter: brightness(0) invert(1);
+  transition: filter .35s ease-in-out;
   &:hover {
     color: rgba(0,0,0,1);
+    filter: brightness(1) invert(0);
   }
 `
 
-const PageHeader = ({ siteTitle }) => (
-  <Header className={`header`}
-  >
-    <Navbar className={`navbar`} role="navigation" aria-label="main navigation">
-      <NavbarBrand
-        fade
-        to="/"
-        exit={{
-        }}
-        entry={{
-          delay: 0.5
-        }}
-      >
-        {siteTitle}
-      </NavbarBrand>
-      <NavbarLinks>
-        <NavbarAniLink
+const PageHeader = ({ siteTitle }) => {
+  const data = useStaticQuery(graphql`
+    query {
+      navImageStrategy: file(relativePath: { eq: "finch-reeds--inverted.png" }) {
+        ...navFluidImage
+      }
+      navImageDevelopment: file(relativePath: { eq: "weaver-finch--inverted.png" }) {
+        ...navFluidImage
+      }
+      navImageGrowth: file(relativePath: { eq: "gouldian-finches--inverted.png" }) {
+        ...navFluidImage
+      }
+      navImageConnect: file(relativePath: { eq: "two-finches--inverted.png" }) {
+        ...navFluidImage
+      }
+      site {
+        ...siteMeta
+      }
+    }
+  `)
+
+  return (
+    <Header className={`header`}>
+      <Navbar className={`navbar`} role="navigation" aria-label="main navigation">
+        <NavbarBrand
           fade
-          to="/strategy"
-          className={`navbar__link`}
-          activeClassName="active"
+          to="/"
           exit={{
           }}
           entry={{
             delay: 0.5
           }}
         >
-          Strategy
-        </NavbarAniLink>
-        <NavbarAniLink
-          fade
-          to="/development"
-          className={`navbar__link`}
-          activeClassName="active"
-          exit={{
-          }}
-          entry={{
-            delay: 0.5
-          }}
-        >
-          Development
-        </NavbarAniLink>
-        <NavbarAniLink
-          fade
-          to="/growth"
-          className={`navbar__link`}
-          activeClassName="active"
-          exit={{
-          }}
-          entry={{
-            delay: 0.5
-          }}
-        >
-          Growth
-        </NavbarAniLink>
-        <NavbarAniLink
-          fade
-          to="/connect"
-          className={`navbar__link`}
-          activeClassName="active"
-          exit={{
-          }}
-          entry={{
-            delay: 0.5
-          }}
-        >
-          Connect
-        </NavbarAniLink>
-      </NavbarLinks>
-    </Navbar>
-  </Header>
-)
+          {siteTitle}
+        </NavbarBrand>
+        <NavbarLinks>
+          <NavbarAniLink
+            fade
+            to="/strategy"
+            className={`navbar__link navbar__img`}
+            activeClassName="active"
+            alt="Strategy"
+            exit={{
+            }}
+            entry={{
+              delay: 0.5
+            }}
+          >
+            <Img fluid={data.navImageStrategy.childImageSharp.fluid} />
+          </NavbarAniLink>
+          <NavbarAniLink
+            fade
+            to="/development"
+            className={`navbar__link`}
+            activeClassName="active"
+            alt="Development"
+            exit={{
+            }}
+            entry={{
+              delay: 0.5
+            }}
+          >
+            <Img fluid={data.navImageDevelopment.childImageSharp.fluid} />
+          </NavbarAniLink>
+          <NavbarAniLink
+            fade
+            to="/growth"
+            className={`navbar__link`}
+            activeClassName="active"
+            alt="Growth"
+            exit={{
+            }}
+            entry={{
+              delay: 0.5
+            }}
+          >
+            <Img fluid={data.navImageGrowth.childImageSharp.fluid} />
+          </NavbarAniLink>
+          <NavbarAniLink
+            fade
+            to="/connect"
+            className={`navbar__link`}
+            activeClassName="active"
+            alt="Connect"
+            exit={{
+            }}
+            entry={{
+              delay: 0.5
+            }}
+          >
+            <Img fluid={data.navImageConnect.childImageSharp.fluid} />
+          </NavbarAniLink>
+        </NavbarLinks>
+      </Navbar>
+    </Header>
+  )
+}
 
 PageHeader.propTypes = {
   siteTitle: PropTypes.string,

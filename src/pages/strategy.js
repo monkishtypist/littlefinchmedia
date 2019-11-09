@@ -1,8 +1,8 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
+import styled from "styled-components"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import styled from "styled-components"
 import Section from '../components/section'
 import Title from '../components/title'
 import BackgroundImage from 'gatsby-background-image'

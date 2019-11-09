@@ -23,6 +23,8 @@ const Content = styled.div`
   z-index: 1;
 `
 
+// const isBrowser = typeof window !== "undefined"
+
 const Callback = () => {
   const { handleAuthentication } = useAuth()
 

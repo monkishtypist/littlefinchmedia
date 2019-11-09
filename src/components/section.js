@@ -7,7 +7,7 @@ const Section = styled.section`
   display: flex;
   flex-direction: row;
   height: 100vh;
-  padding: 5rem 2rem;
+  padding: 2rem 2rem;
   position: relative;
 `
 

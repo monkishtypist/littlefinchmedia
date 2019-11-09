@@ -1,5 +1,4 @@
 import React from "react"
-import { Router } from "@reach/router"
 import { useAuth } from "react-use-auth"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -35,21 +34,10 @@ const Content = styled.div`
   }
 `
 
-const Home = ({ user }) => {
-  return (
-    <div>
-      <p>Hello and welcome {user.nickname || "friend"}</p>
-      <p>
-        There is nothing to see here at the moment.
-      </p>
-    </div>
-  )
-}
+const AccountPage = ({ id, className }) => {
+  const { user, authResult } = useAuth()
 
-const PageAccount = ({ id, className }) => {
-  const { isAuthenticated, user, login } = useAuth()
-
-  // if (!isAuthenticated()) return login()
+  console.log(authResult)
 
   return (
     <Layout>
@@ -57,9 +45,10 @@ const PageAccount = ({ id, className }) => {
       <Section id={id || 'Account'} className={className || ''}>
         <SectionInner>
           <Content>
-            <Router>
-              <Home path="/account" user={user} />
-            </Router>
+          <p>Hello and welcome {user.nickname || "friend"}</p>
+          <p>
+            There is nothing to see here at the moment.
+          </p>
           </Content>
         </SectionInner>
       </Section>
@@ -67,4 +56,4 @@ const PageAccount = ({ id, className }) => {
   )
 }
 
-export default PageAccount
+export default AccountPage

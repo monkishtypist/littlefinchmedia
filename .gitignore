@@ -72,3 +72,6 @@ yarn-error.log
 
 # VSC
 littlefinchmedia.code-workspace
+
+# Development files
+.psd
