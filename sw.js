@@ -27,26 +27,26 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-0bd62192b09f0351299b.js"
+    "url": "webpack-runtime-403f5e44a2436a336817.js"
   },
   {
     "url": "styles.4b3ce496e3b88ee7f750.css"
   },
   {
-    "url": "styles-6c6750e1ca723ddf5b33.js"
+    "url": "styles-a564560df27bed72fbbf.js"
   },
   {
-    "url": "commons-6aa1750a3013bfd474b7.js"
+    "url": "commons-79dc0080a96337661b62.js"
   },
   {
-    "url": "app-7ce588c0a2d6c5dedc04.js"
+    "url": "app-33d85591f3bf8f1f980b.js"
   },
   {
-    "url": "component---node-modules-gatsby-plugin-offline-app-shell-js-831055cf3b2f0bc68002.js"
+    "url": "component---node-modules-gatsby-plugin-offline-app-shell-js-6cc37212ef529ca81b4e.js"
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "6eff563676052d6f083c033fe71f58b4"
+    "revision": "cd906d04e641defe8a136ec107b09d04"
   },
   {
     "url": "page-data/offline-plugin-app-shell-fallback/page-data.json",
@@ -54,13 +54,13 @@ self.__precacheManifest = [
   },
   {
     "url": "manifest.webmanifest",
-    "revision": "5a6bfd91bad94bcef9763d802c3a37bc"
+    "revision": "73c6fdafa3da93dd4acb294e0850d9be"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
 workbox.routing.registerRoute(/(\.js$|\.css$|static\/)/, new workbox.strategies.CacheFirst(), 'GET');
-workbox.routing.registerRoute(/^https?:.*\page-data\/.*\/page-data\.json/, new workbox.strategies.NetworkFirst(), 'GET');
+workbox.routing.registerRoute(/^https?:.*\page-data\/.*\/page-data\.json/, new workbox.strategies.StaleWhileRevalidate(), 'GET');
 workbox.routing.registerRoute(/^https?:.*\.(png|jpg|jpeg|webp|svg|gif|tiff|js|woff|woff2|json|css)$/, new workbox.strategies.StaleWhileRevalidate(), 'GET');
 workbox.routing.registerRoute(/^https?:\/\/fonts\.googleapis\.com\/css/, new workbox.strategies.StaleWhileRevalidate(), 'GET');
 
@@ -103,7 +103,7 @@ function handleAPIRequest({ event }) {
   const params = pathname.match(/:(.+)/)[1]
   const data = {}
 
-  if (params.indexOf(`=`) !== -1) {
+  if (params.includes(`=`)) {
     params.split(`&`).forEach(param => {
       const [key, val] = param.split(`=`)
       data[key] = val
@@ -147,7 +147,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/littlefinchmedia/app-7ce588c0a2d6c5dedc04.js`))) {
+  if (!resources || !(await caches.match(`/littlefinchmedia/app-33d85591f3bf8f1f980b.js`))) {
     return await fetch(event.request)
   }
 
