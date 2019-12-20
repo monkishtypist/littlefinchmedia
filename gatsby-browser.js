@@ -24,3 +24,5 @@ export const wrapRootElement = ({ element }) => (
         {element}
     </AuthProvider>
 )
+
+console.log('GATSBY_AUTH0_CALLBACK: ' + params.redirectUri);
