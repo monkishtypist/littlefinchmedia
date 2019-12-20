@@ -3,8 +3,6 @@ import { navigate } from "gatsby"
 
 import { AuthProvider } from "react-use-auth"
 
-// import "./src/styles/reset.css"
-
 const params = {
   // domain: process.env.GATSBY_AUTH0_DOMAIN,
   // clientID: process.env.GATSBY_AUTH0_CLIENTID,
@@ -24,5 +22,3 @@ export const wrapRootElement = ({ element }) => (
         {element}
     </AuthProvider>
 )
-
-console.log('GATSBY_AUTH0_CALLBACK: ' + params.redirectUri);
