@@ -19,6 +19,10 @@ From there browse to [monkishtypist.github.io/littlefinchmedia][3] to preview th
 
 To learn more, see the article ["How Gatsby Works with GitHub Pages"][2].
 
+## Deploy: Netlify (Production)
+
+To deploy to production, simply `git push origin master` and Netlify will build and serve our site.
+
 ---
 ## Powered By
 <a href="https://www.gatsbyjs.org">
