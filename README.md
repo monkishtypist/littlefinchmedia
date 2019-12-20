@@ -6,14 +6,18 @@ See the [Gatsby Quickstart][1] guide.
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/1b35fbfa-389e-4655-87b5-964c88fd1398/deploy-status)](https://app.netlify.com/sites/serene-euler-988cd5/deploys)
 
+### Note on `npm` vs `yarn`
+
+Due to errors with `npm` and `package-lock.json` we are using `yarn` instead. Just a heads up.
+
 ## Deploy: GitHub Pages (Dev)
 
 To deploy the site to GitHub pages run:
 ```bash
-npm run deploy
+yarn run deploy
 ```
 
-This will execute the commend `gatsby build --prefix-paths && gh-pages -d public` which will build our Gatsby files and then push to the `gh-pages` branch.
+This will execute the commend `GATSBY_ACTIVE_ENV=gh-pages gatsby build --prefix-paths && gh-pages -d public` which will set our environment vars, build our Gatsby files, and then push them to GitHub Pages branch.
 
 From there browse to [monkishtypist.github.io/littlefinchmedia][3] to preview the site.
 
