@@ -10,7 +10,19 @@ See the [Gatsby Quickstart][1] guide.
 
 Due to errors with `npm` and `package-lock.json` we are using `yarn` instead. Just a heads up.
 
-## Deploy: GitHub Pages (Dev)
+## Develop: Starting the Development Environment
+
+```bash
+yarn run develop
+```
+or...
+```bash
+gatsby develop
+```
+
+Then browse to [localhost:8000][localhost]
+
+## Deploy: GitHub Pages (Staging)
 
 To deploy the site to GitHub pages run:
 ```bash
@@ -41,6 +53,7 @@ To deploy to production, simply `git push origin master` and Netlify will build 
   <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" height="60" />
 </a>
 
+[localhost]: http://localhost:8000/
 [1]: https://www.gatsbyjs.org/docs/quick-start/
 [2]: https://www.gatsbyjs.org/docs/how-gatsby-works-with-github-pages/
 [3]: https://monkishtypist.github.io/littlefinchmedia/
