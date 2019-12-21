@@ -19,6 +19,35 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-source-github',
+      options: {
+        headers: {
+          Authorization: `Bearer ${process.env.GATSBY_GITHUB_PERSONAL_ACCESS_TOKEN}`,
+        },
+        queries: [
+          `{
+            repository(owner: "monkishtypist", name: "littlefinchmedia-blog") {
+              issues(last: 20, states: OPEN) {
+                edges {
+                  node {
+                    id
+                    author {
+                      avatarUrl
+                      login
+                      url
+                    }
+                    bodyHTML
+                    title
+                    url
+                  }
+                }
+              }
+            }
+          }`,
+        ],
+      },
+    },
+    {
       resolve: `gatsby-plugin-google-tagmanager`,
       options: {
         id: `GTM-WX4M8KM`,

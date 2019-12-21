@@ -1,24 +1,31 @@
 import React from "react"
-import { navigate } from "gatsby"
+import { silentAuth } from "./src/utils/auth"
 
-import { AuthProvider } from "react-use-auth"
+class SessionCheck extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      loading: true,
+    }
+  }
 
-const params = {
-  // domain: process.env.GATSBY_AUTH0_DOMAIN,
-  // clientID: process.env.GATSBY_AUTH0_CLIENTID,
-  redirectUri: process.env.GATSBY_AUTH0_CALLBACK,
-  // audience: `https://${auth0_domain}/api/v2/`,
-  // responseType: "token id_token",
-  // scope: "openid profile email"
+  handleCheckSession = () => {
+    this.setState({ loading: false })
+  }
+
+  componentDidMount() {
+    silentAuth(this.handleCheckSession)
+  }
+
+  render() {
+    return (
+      this.state.loading === false && (
+        <React.Fragment>{this.props.children}</React.Fragment>
+      )
+    )
+  }
 }
 
-export const wrapRootElement = ({ element }) => (
-    <AuthProvider
-        navigate={navigate}
-        auth0_domain={process.env.GATSBY_AUTH0_DOMAIN}
-        auth0_client_id={process.env.GATSBY_AUTH0_CLIENTID}
-        auth0_params={params}
-    >
-        {element}
-    </AuthProvider>
-)
+export const wrapRootElement = ({ element }) => {
+  return <SessionCheck>{element}</SessionCheck>
+}

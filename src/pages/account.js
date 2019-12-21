@@ -1,5 +1,5 @@
 import React from "react"
-import { useAuth } from "react-use-auth"
+import { login, isAuthenticated, getProfile } from "../utils/auth"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import styled from "styled-components"
@@ -35,9 +35,12 @@ const Content = styled.div`
 `
 
 const AccountPage = ({ id, className }) => {
-  const { user, authResult } = useAuth()
+  if (!isAuthenticated()) {
+    login()
+    return <p>Redirecting to login...</p>
+  }
 
-  console.log(authResult)
+  const user = getProfile()
 
   return (
     <Layout>

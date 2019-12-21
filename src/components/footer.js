@@ -1,5 +1,5 @@
 import React from 'react'
-import { useAuth } from "react-use-auth"
+import { login, logout, isAuthenticated, getProfile } from "../utils/auth"
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import styled from 'styled-components'
 
@@ -47,7 +47,7 @@ const NavbarAniLink = styled(AniLink)`
 `
 
 export default () => {
-  const { isAuthenticated, login, logout } = useAuth()
+  const user = getProfile()
 
   return (
     <Footer>
@@ -78,7 +78,7 @@ export default () => {
                 delay: 0.5
               }}
             >
-              Welcome
+              Welcome {user.nickname || "friend"}
             </NavbarAniLink>
             <NavbarLink
               href="#logout"

@@ -1,5 +1,5 @@
-import React, { useEffect } from "react"
-import { useAuth } from "react-use-auth"
+import React from "react"
+import { handleAuthentication } from "../utils/auth"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import styled from "styled-components"
@@ -26,11 +26,7 @@ const Content = styled.div`
 // const isBrowser = typeof window !== "undefined"
 
 const Callback = () => {
-  const { handleAuthentication } = useAuth()
-
-  useEffect(() => {
-    handleAuthentication({ postLoginRoute: "/account" })
-  })
+  handleAuthentication()
 
   return (
     <Layout>
@@ -38,7 +34,7 @@ const Callback = () => {
       <Section id="Callback" className="section">
         <SectionInner>
           <Content>
-            <Title>Redirecting...</Title>
+            <Title>Loading...</Title>
           </Content>
         </SectionInner>
       </Section>
