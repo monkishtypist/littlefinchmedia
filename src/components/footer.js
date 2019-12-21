@@ -1,6 +1,6 @@
 import React from 'react'
+import { Link } from "gatsby"
 import { login, logout, isAuthenticated, getProfile } from "../utils/auth"
-import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import styled from 'styled-components'
 
 const Footer = styled.footer`
@@ -9,8 +9,7 @@ const Footer = styled.footer`
   display: flex;
   justify-content: center;
   left: 0;
-  padding: 1rem 2rem 2rem;
-  position: fixed;
+  position: relative;
   right: 0;
   z-index: 1000;
 `
@@ -21,7 +20,7 @@ const Navbar = styled.nav`
   flex-direction: row;
   justify-content: space-between;
 `
-const NavbarLink = styled.a`
+const NavbarLinkA = styled.a`
   color: rgba(255,255,255,1);
   cursor: pointer;
   font-size: 14px;
@@ -33,8 +32,8 @@ const NavbarLink = styled.a`
     color: rgba(255,255,255,.5);
   }
 `
-const NavbarAniLink = styled(AniLink)`
-  color: rgba(0,0,0,.5);
+const NavbarLink = styled(Link)`
+  color: rgba(255,255,255,1);
   cursor: pointer;
   font-size: 14px;
   font-weight: 300;
@@ -42,7 +41,7 @@ const NavbarAniLink = styled(AniLink)`
   text-decoration: none;
   &.active,
   &:hover {
-    color: rgba(0,0,0,1);
+    color: rgba(255,255,255,.5);
   }
 `
 
@@ -55,7 +54,7 @@ export default () => {
         { !isAuthenticated() &&
           <>
             <div />
-            <NavbarLink
+            <NavbarLinkA
               href="#login"
               onClick={e => {
                 login()
@@ -63,12 +62,12 @@ export default () => {
               }}
             >
               Login
-            </NavbarLink>
+            </NavbarLinkA>
           </>
         }
         { isAuthenticated() &&
           <>
-            <NavbarAniLink
+            <NavbarLink
               fade
               to="/account"
               activeClassName="active"
@@ -79,8 +78,13 @@ export default () => {
               }}
             >
               Welcome {user.nickname || "friend"}
-            </NavbarAniLink>
+            </NavbarLink>
             <NavbarLink
+              to="/blog"
+            >
+              Blog
+            </NavbarLink>
+            <NavbarLinkA
               href="#logout"
               onClick={e => {
                 logout()
@@ -88,7 +92,7 @@ export default () => {
               }}
             >
               Log Out
-            </NavbarLink>
+            </NavbarLinkA>
           </>
         }
       </Navbar>

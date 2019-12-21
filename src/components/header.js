@@ -1,18 +1,17 @@
 import React from 'react'
 import { useStaticQuery, graphql } from "gatsby"
 import PropTypes from 'prop-types'
-import AniLink from 'gatsby-plugin-transition-link/AniLink'
+import { Link } from "gatsby"
 import Img from 'gatsby-image'
 import styled from 'styled-components'
 
 const Header = styled.header`
   background: transparent;
   display: flex;
-  justify-content: center;
   left: 0;
   line-height: 1.14285714286;
-  padding: 2rem 2rem 1rem;
-  position: fixed;
+  /* padding: 2rem 2rem 1rem; */
+  position: relative;
   right: 0;
   top: 0;
   z-index: 1000;
@@ -25,7 +24,7 @@ const Navbar = styled.nav`
   justify-content: space-between;
 `
 
-const NavbarBrand = styled(AniLink)`
+const NavbarBrand = styled(Link)`
   color: rgba(255,255,255,1);
   cursor: pointer;
   font-size: 14px;
@@ -41,7 +40,7 @@ const NavbarLinks = styled.div`
   margin-left: auto;
 `
 
-const NavbarAniLink = styled(AniLink)`
+const NavbarLink = styled(Link)`
   background-color: transparent;
   border-radius: 50%;
   color: rgba(255,255,255,1);
@@ -97,7 +96,7 @@ const PageHeader = ({ siteTitle }) => {
           {siteTitle}
         </NavbarBrand>
         <NavbarLinks>
-          <NavbarAniLink
+          <NavbarLink
             fade
             to="/strategy"
             className={`navbar__link navbar__img`}
@@ -110,8 +109,8 @@ const PageHeader = ({ siteTitle }) => {
             }}
           >
             <Img fluid={data.navImageStrategy.childImageSharp.fluid} />
-          </NavbarAniLink>
-          <NavbarAniLink
+          </NavbarLink>
+          <NavbarLink
             fade
             to="/development"
             className={`navbar__link`}
@@ -124,8 +123,8 @@ const PageHeader = ({ siteTitle }) => {
             }}
           >
             <Img fluid={data.navImageDevelopment.childImageSharp.fluid} />
-          </NavbarAniLink>
-          <NavbarAniLink
+          </NavbarLink>
+          <NavbarLink
             fade
             to="/growth"
             className={`navbar__link`}
@@ -138,8 +137,8 @@ const PageHeader = ({ siteTitle }) => {
             }}
           >
             <Img fluid={data.navImageGrowth.childImageSharp.fluid} />
-          </NavbarAniLink>
-          <NavbarAniLink
+          </NavbarLink>
+          <NavbarLink
             fade
             to="/connect"
             className={`navbar__link`}
@@ -152,7 +151,7 @@ const PageHeader = ({ siteTitle }) => {
             }}
           >
             <Img fluid={data.navImageConnect.childImageSharp.fluid} />
-          </NavbarAniLink>
+          </NavbarLink>
         </NavbarLinks>
       </Navbar>
     </Header>

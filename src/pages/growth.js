@@ -1,19 +1,21 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import PageTemplate from "../templates/pages"
 import styled from "styled-components"
-import Section from '../components/section'
 import Title from '../components/title'
 import BackgroundImage from 'gatsby-background-image'
 
-const SectionInner = styled(BackgroundImage)`
-  box-shadow: 0 0 18px rgba(0,0,0,.2);
-  display: flex;
-  flex: 1 0 auto;
-  flex-direction: row;
-  position: relative;
+const BackgroundImageWrapper = styled(BackgroundImage)`
   background-attachment: fixed;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  left: 0;
+  padding-bottom: 3rem;
+  padding-top: 5rem;
+  position: absolute !important;
+  right: 0;
+  top: 0;
   &::before,
   &::after {
     background-attachment: fixed;
@@ -33,7 +35,7 @@ const Content = styled.div`
   }
 `
 
-const PageGrowth = ({ id, className }) => {
+const PageGrowth = () => {
   const data = useStaticQuery(graphql`
     query {
       sectionBackground: file(relativePath: { eq: "gouldian-finches.jpg" }) {
@@ -46,16 +48,13 @@ const PageGrowth = ({ id, className }) => {
   `)
 
   return (
-    <Layout>
-      <SEO title="Growth" />
-      <Section id={id || 'Growth'} className={className || ''}>
-        <SectionInner fluid={data.sectionBackground.childImageSharp.fluid}>
-          <Content>
-            <Title>Growth</Title>
-          </Content>
-        </SectionInner>
-      </Section>
-    </Layout>
+    <PageTemplate>
+      <BackgroundImageWrapper fluid={data.sectionBackground.childImageSharp.fluid}>
+        <Content>
+          <Title>Growth</Title>
+        </Content>
+      </BackgroundImageWrapper>
+    </PageTemplate>
   )
 }
 

@@ -1,17 +1,21 @@
 import React from "react"
 import { login, isAuthenticated, getProfile } from "../utils/auth"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import { useStaticQuery, graphql } from "gatsby"
+import PageTemplate from "../templates/pages"
 import styled from "styled-components"
-import Section from '../components/section'
+import BackgroundImage from 'gatsby-background-image'
 
-const SectionInner = styled.div`
-  box-shadow: 0 0 18px rgba(0,0,0,.2);
-  display: flex;
-  flex: 1 0 auto;
-  flex-direction: row;
-  position: relative;
+const BackgroundImageWrapper = styled(BackgroundImage)`
   background-attachment: fixed;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  left: 0;
+  padding-bottom: 3rem;
+  padding-top: 5rem;
+  position: absolute !important;
+  right: 0;
+  top: 0;
   &::before,
   &::after {
     background-attachment: fixed;
@@ -35,6 +39,17 @@ const Content = styled.div`
 `
 
 const AccountPage = ({ id, className }) => {
+  const data = useStaticQuery(graphql`
+    query {
+      sectionBackground: file(relativePath: { eq: "finches-on-branch.jpg" }) {
+        ...fluidImage
+      }
+      site {
+        ...siteMeta
+      }
+    }
+  `)
+
   if (!isAuthenticated()) {
     login()
     return <p>Redirecting to login...</p>
@@ -43,19 +58,16 @@ const AccountPage = ({ id, className }) => {
   const user = getProfile()
 
   return (
-    <Layout>
-      <SEO title="Account" />
-      <Section id={id || 'Account'} className={className || ''}>
-        <SectionInner>
-          <Content>
+    <PageTemplate>
+      <BackgroundImageWrapper fluid={data.sectionBackground.childImageSharp.fluid}>
+        <Content>
           <p>Hello and welcome {user.nickname || "friend"}</p>
           <p>
             There is nothing to see here at the moment.
           </p>
-          </Content>
-        </SectionInner>
-      </Section>
-    </Layout>
+        </Content>
+      </BackgroundImageWrapper>
+    </PageTemplate>
   )
 }
 

@@ -1,3 +1,42 @@
+const path = require(`path`)
+
+exports.createPosts = async ({ actions, graphql, reporter }) => {
+  const { createPost } = actions
+
+  const postsTemplate = path.resolve(`src/templates/posts.js`)
+
+  const result = await graphql(`
+    {
+      allMarkdownRemark(
+        sort: { order: DESC, fields: [frontmatter___date] }
+        limit: 1000
+      ) {
+        edges {
+          node {
+            frontmatter {
+              path
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  // Handle errors
+  if (result.errors) {
+    reporter.panicOnBuild(`Error while running GraphQL query.`)
+    return
+  }
+
+  result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+    createPost({
+      path: node.frontmatter.path,
+      component: postsTemplate,
+      context: {}, // additional data can be passed via context
+    })
+  })
+}
+
 exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
   if (stage === "build-html") {
     /*

@@ -1,19 +1,21 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import PageTemplate from "../templates/pages"
 import styled from "styled-components"
-import Section from '../components/section'
 import Title from '../components/title'
 import BackgroundImage from 'gatsby-background-image'
 
-const SectionInner = styled(BackgroundImage)`
-  box-shadow: 0 0 18px rgba(0,0,0,.2);
-  display: flex;
-  flex: 1 0 auto;
-  flex-direction: row;
-  position: relative;
+const BackgroundImageWrapper = styled(BackgroundImage)`
   background-attachment: fixed;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  left: 0;
+  padding-bottom: 3rem;
+  padding-top: 5rem;
+  position: absolute !important;
+  right: 0;
+  top: 0;
   &::before,
   &::after {
     background-attachment: fixed;
@@ -46,19 +48,16 @@ const PageConnect = ({ id, className }) => {
   `)
 
   return (
-    <Layout>
-      <SEO title="Connect" />
-      <Section id={id || 'Connect'} className={className || ''}>
-        <SectionInner fluid={data.sectionBackground.childImageSharp.fluid}>
-          <Content>
-            <Title>Connect</Title>
-            <p><a href="mailto:inquiries@littlefinchmedia.com">inquiries@littlefinchmedia.com</a></p>
-            <p>{data.site.siteMetadata.title} © {new Date().getFullYear()}</p>
-            <p>{data.site.siteMetadata.description}</p>
-          </Content>
-        </SectionInner>
-      </Section>
-    </Layout>
+    <PageTemplate>
+      <BackgroundImageWrapper fluid={data.sectionBackground.childImageSharp.fluid}>
+        <Content>
+          <Title>Connect</Title>
+          <p><a href="mailto:inquiries@littlefinchmedia.com">inquiries@littlefinchmedia.com</a></p>
+          <p>{data.site.siteMetadata.title} © {new Date().getFullYear()}</p>
+          <p>{data.site.siteMetadata.description}</p>
+        </Content>
+      </BackgroundImageWrapper>
+    </PageTemplate>
   )
 }
 
