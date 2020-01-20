@@ -35,6 +35,14 @@ const Content = styled.div`
   }
 `
 
+const P = styled.p`
+  text-shadow: 1px 1px 6px rgba(0,0,0,.25);
+`
+
+const A = styled.a`
+  color: white;
+`
+
 const PageConnect = ({ id, className }) => {
   const data = useStaticQuery(graphql`
     query {
@@ -52,9 +60,12 @@ const PageConnect = ({ id, className }) => {
       <BackgroundImageWrapper fluid={data.sectionBackground.childImageSharp.fluid}>
         <Content>
           <Title>Connect</Title>
-          <p><a href="mailto:inquiries@littlefinchmedia.com">inquiries@littlefinchmedia.com</a></p>
-          <p>{data.site.siteMetadata.title} © {new Date().getFullYear()}</p>
-          <p>{data.site.siteMetadata.description}</p>
+          <P>
+            <A href="mailto:inquiries@littlefinchmedia.com">
+              inquiries@littlefinchmedia.com
+            </A>
+          </P>
+          <P>{data.site.siteMetadata.title} © {new Date().getFullYear()}</P>
         </Content>
       </BackgroundImageWrapper>
     </PageTemplate>

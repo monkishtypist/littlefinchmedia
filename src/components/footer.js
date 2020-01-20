@@ -12,6 +12,8 @@ const Footer = styled.footer`
   position: relative;
   right: 0;
   z-index: 1000;
+  /* Hidden for now */
+  display: none;
 `
 
 const Navbar = styled.nav`

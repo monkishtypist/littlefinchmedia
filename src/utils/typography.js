@@ -28,7 +28,7 @@ const typography = new Typography({
     'sans-serif',
   ],
   bodyFontFamily: ['Roboto', 'sans-serif'],
-  headerWeight: 300
+  headerWeight: 600
 })
 
 export const { scale, rhythm, options } = typography

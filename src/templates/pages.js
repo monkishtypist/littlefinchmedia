@@ -6,15 +6,16 @@ import Footer from "../components/footer"
 
 const Wrapper = styled.div`
   background-color: transparent;
+  bottom: 2rem;
   box-shadow: 0 0 18px rgba(0,0,0,.2);
   display: flex;
   flex: 1 0 auto;
   flex-direction: column;
-  position: fixed;
-  top: 2rem;
-  bottom: 2rem;
   left: 2rem;
+  overflow: hidden;
+  position: fixed;
   right: 2rem;
+  top: 2rem;
 `
 
 const Main = styled.main`

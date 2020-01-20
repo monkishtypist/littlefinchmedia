@@ -51,7 +51,7 @@ const IndexPage = () => {
     <PageTemplate>
       <BackgroundImageWrapper fluid={data.sectionBackground.childImageSharp.fluid}>
         <Content>
-          <Title>{data.site.siteMetadata.title}</Title>
+          <Title>Little <br />Finch <br />Media</Title>
         </Content>
       </BackgroundImageWrapper>
     </PageTemplate>

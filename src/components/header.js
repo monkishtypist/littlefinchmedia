@@ -32,6 +32,9 @@ const NavbarBrand = styled(Link)`
   margin-right: auto;
   padding: 1rem;
   text-decoration: none;
+  &.hidden {
+    display: none;
+  }
 `
 
 const NavbarLinks = styled.div`
@@ -92,6 +95,7 @@ const PageHeader = ({ siteTitle }) => {
           entry={{
             delay: 0.5
           }}
+          activeClassName={`hidden`}
         >
           {siteTitle}
         </NavbarBrand>
